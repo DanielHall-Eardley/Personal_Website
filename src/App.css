@@ -1,0 +1,149 @@
+.title_container{
+  display: flex;
+  justify-content: center;
+background-color: black;
+}
+
+.summary_container{
+  display: flex;
+  justify-content:center;
+  height: 30%;
+  background-color: black;
+  padding: 2%;
+}
+
+.footer_container{
+  display: grid;
+  grid-template-rows: 20% 20%;
+  background-color: lightgray;
+  padding: 2%; 
+}
+
+.details_container{
+  height: 28vh;
+  overflow: hidden;
+}
+
+.details_container_expanded{
+  height:auto;
+}
+
+.footer{
+display:flex;
+justify-content: space-evenly;
+}
+
+.form_container{
+  display:grid;
+  grid-template-rows: 12% ;
+  grid-template-columns: 4fr [title] 3fr [text_input] 2fr [submit_button] 1fr [hide_button];
+  padding: 2%;
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+
+.animated_name{
+font: italic 4rem "Fira Sans", serif;
+color: white;
+}
+
+.sub_title_container{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color:black;
+} 
+
+.sub_title_text{
+  color: white;
+}
+
+.login_title{
+  grid-column: [title];
+}
+
+.login_text{
+grid-column: [text_input];
+}
+
+.login_button{
+grid-column: [submit_button];
+}
+
+.hide_button{
+grid-column: [hide_button]
+}
+
+a{
+outline: none;
+text-decoration: none;
+color: black;
+}
+
+a:hover, a:focus{
+color: orange;
+}
+
+a:active{
+color: red;
+}
+
+.details_header{
+  display: grid;
+  grid-template-columns: 1fr 3fr auto;
+  background-color: aquamarine;
+  text-align: center;
+}
+
+.skill_table{
+  display: grid;
+  grid-template-rows: 12%;
+  grid-template-columns: 1fr 3fr;
+  text-align: center;
+}
+
+.skill{
+  font-size: 1.3rem;
+  color: darkred;
+}
+
+.level{
+  font-size: 1.3rem;
+  color: darkred;
+}
+
+.summary{
+  color:white
+}
+
+.like_list{
+height: 40vh;
+}
+
+.skill_level{
+ width: 80%;
+ height: 20%;
+ margin: 40% 0%;
+ background-color:lightskyblue
+}
+
+.highlight{
+background-color:palevioletred
+}
+
+.skill_stat{
+  display:grid;
+  grid-template-columns: repeat(10, 1fr)
+}
+
+.edit_button_container{
+  display: flex;
+  justify-content: center;
+}
+
+.update_container{
+  display:grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr 1fr 1fr;
+  height: 5vh;
+}
+
