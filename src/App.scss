@@ -1,0 +1,60 @@
+@import "./component_styles/_animatedTitle";
+@import "./component_styles/_details";
+@import "./component_styles/_footer";
+@import "./component_styles/_likeList";
+@import "./component_styles/_login";
+@import "./component_styles/_updateContent";
+
+.title_container{
+    display: flex;
+    justify-content: center;
+  background-color: black;
+  }
+  
+  .summary_container{
+    display: flex;
+    justify-content:center;
+    height: 30%;
+    background-color: black;
+    padding: 2%;
+  }
+
+  .summary{
+    color:white
+  }
+  
+  .animated_name{
+  font: italic 4rem "Fira Sans", serif;
+  color: white;
+  }
+  
+
+
+
+  a{
+  outline: none;
+  text-decoration: none;
+  color: black;
+  }
+  
+  a:hover, a:focus{
+  color: orange;
+  }
+  
+  a:active{
+  color: red;
+  }
+
+  .sub_title_container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color:black;
+  } 
+  
+  .sub_title_text{
+    color: white;
+  }
+  
+
+ 

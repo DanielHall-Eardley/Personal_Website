@@ -37,14 +37,14 @@ class ConnectedLogin extends Component{
     
     render(){
         const {title} = this.state
-        const {getText} = this.props
+        const {getText, toggleLogin} = this.props
         return(
         <form className="form_container" onSubmit={this.handleSubmit}>
         <label className="login_title">{title}</label>
            <input className="login_text" type="password" onChange={this.handleChange} 
            value={getText}/>
-           <button className="login_button" type="submit">Submit</button>
-           <Link to="/" className="hide_button"><button>Back</button></Link>
+           <button className="login_button" type="submit">Login</button>
+           <Link to="/" className="hide_button"><button onClick={()=>toggleLogin(false)}>Logout</button></Link>
        </form>
         )
     }

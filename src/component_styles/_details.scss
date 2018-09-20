@@ -1,0 +1,50 @@
+.details_container{
+    height: 28vh;
+    overflow: hidden;
+  }
+  
+  .details_container_expanded{
+    height:auto;
+  }
+
+  .details_header{
+    display: grid;
+    grid-template-columns: 1fr 3fr auto;
+    background-color: aquamarine;
+    text-align: center;
+  }
+
+  .skill_table{
+    display: grid;
+    grid-template-rows: 12%;
+    grid-template-columns: 1fr 3fr;
+    text-align: center;
+  }
+  
+  .skill{
+    font-size: 1.3rem;
+    color: darkred;
+  }
+  
+  .level{
+    font-size: 1.3rem;
+    color: darkred;
+  }
+  
+  .skill_level{
+    width: 80%;
+    height: 20%;
+    margin: 40% 0%;
+    background-color:lightskyblue
+   }
+   
+   .highlight{
+   background-color:palevioletred
+   }
+   
+   .skill_stat{
+     display:grid;
+     grid-template-columns: repeat(10, 1fr)
+   }
+
+   

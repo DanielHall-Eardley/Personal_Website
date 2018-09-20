@@ -12,7 +12,8 @@ class ConnectedLikeList extends Component{
   state={
     title:"",
     searchInput:"",
-    likeData:[]
+    likeData:[],
+    scrollClass: "list_container"
   }
 
   componentDidMount(){
@@ -64,14 +65,26 @@ class ConnectedLikeList extends Component{
         })
       })
     })
+  }
 
-}
+  scrollFunction = (direction)=>{
+  if(direction === "left"){
+    this.setState({
+      scrollClass: "list_container_left"
+    })
+  }else if(direction === "right"){
+    this.setState({
+      scrollClass: "list_container_right"
+    })
+  }
+  } 
   
-  render(){
-    const {title, searchInput, likeData} = this.state
+render(){
+    const {title, searchInput, likeData, scrollClass} = this.state
     const {loginState} = this.props
+
     return(
-    <div className="like_list">
+    <div className={"like_list"}>
      {loginState === true ?
       <UpdateContent
       firstInputType="text"
@@ -83,13 +96,23 @@ class ConnectedLikeList extends Component{
       secondInputValue={searchInput}
       submitMethod={this.submitMethod}
       /> : null}
-    <div className="video_list"></div>
-      {likeData.map(video=>(
-      <div className="video_container">
-      <iframe className="video"
-      src={video.url}/>
-      </div>
-      ))}
+      
+      <div className={scrollClass}>
+      <button className="scroll_button_left" onClick={()=>this.scrollFunction("left")}>Left</button>
+      <button className="scroll_button_right" onClick={()=>this.scrollFunction("right")}>Right</button> 
+      {likeData.map(video=>{
+      return(
+        <iframe className="video"
+        id={video._id}
+        src={`https://www.youtube.com/embed/${video.url}`}
+        title={video.title}
+        allowFullScreen={true}
+        referrerPolicy="origin-when-cross-origin"
+        frameBorder="0">
+         </iframe>
+      
+      )})}
+    </div>
     </div>
     )
   }

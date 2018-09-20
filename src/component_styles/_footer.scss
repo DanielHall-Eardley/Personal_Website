@@ -1,0 +1,11 @@
+.footer_container{
+    display: grid;
+    grid-template-rows: 20% 20%;
+    background-color: lightgray;
+    padding: 2%; 
+  }
+
+  .footer{
+    display:flex;
+    justify-content: space-evenly;
+    }

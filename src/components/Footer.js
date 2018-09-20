@@ -1,10 +1,15 @@
 import React from "react"
-import {Switch, Route, Link} from "react-router-dom"
+import {Switch, Route, Link, withRouter} from "react-router-dom"
 import Login from "./Login"
 import Email from "./Email"
+import {toggleLogin} from "../redux/actions/ActionCreators"
+import {connect} from "react-redux"
 
+const mapStateToProps = state =>({
+  loginState: state.loginReducer.loginState,
+})
 
-const Footer = (props)=>{
+const ConnectedFooter = (props)=>{
   return(
     <div className="footer_container">
     <div className="footer">
@@ -14,21 +19,23 @@ const Footer = (props)=>{
       rel="noopener noreferrer" target="_blank">React Native App</a>
         <a href="https://github.com/DanielHall-Eardley" 
       rel="noopener noreferrer" target="_blank">GitHub</a>
-      <Link to="Login">Edit information</Link>
-      <Link to="Email">Message me!</Link>
+      
+      <Link to="/Login">Edit</Link>
+      <Link to="/Email">Message me!</Link>
+    
       </div>
       <div className="login_container">
       <Switch>
-      <Route path="/Login" render={(routerProps)=>(
-      <Login {...routerProps}/>
-      )}/>
-      <Route path="/Email" render={(routerProps)=>(
-      <Email {...routerProps}/>
-      )}/>
+        <Route exact path="/Login" render={routerProps=>(
+        <Login {...routerProps}/>)}/>
+    
+        <Route path="/Email" component={Email}/>
     </Switch>
     </div>
     </div>
   )
 }
 
-export default Footer
+const Footer = connect(mapStateToProps)(ConnectedFooter)
+
+export default withRouter(Footer)
