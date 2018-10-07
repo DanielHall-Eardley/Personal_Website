@@ -2,12 +2,20 @@ import React from "react"
 import {Switch, Route, Link, withRouter} from "react-router-dom"
 import Login from "./Login"
 import Email from "./Email"
-import {toggleLogin} from "../redux/actions/ActionCreators"
 import {connect} from "react-redux"
 
 const mapStateToProps = state =>({
   loginState: state.loginReducer.loginState,
 })
+
+const scrollFunction = ()=>{
+  let emailContainer = document.querySelector(".email_container")
+  console.log(emailContainer)
+  return emailContainer.scrollIntoView({
+    behavior:"smooth" 
+  })
+}
+
 
 const ConnectedFooter = (props)=>{
   return(
@@ -28,9 +36,9 @@ const ConnectedFooter = (props)=>{
       <Switch>
         <Route exact path="/Login" render={routerProps=>(
         <Login {...routerProps}/>)}/>
-    
-        <Route path="/Email" component={Email}/>
-    </Switch>
+        <Route path="/Email" component={Email}
+        onEnter={scrollFunction()}/>
+      </Switch>
     </div>
     </div>
   )

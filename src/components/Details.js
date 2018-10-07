@@ -90,30 +90,27 @@ powerLevel=(level)=>{
     <div className={toggleState === "expand" ? "details_container" : "details_container_expanded"}>
       {loginState === true ?
       <UpdateContent
-      firstInputType="text"
-      firstInputPlaceholder="Name of Skill"
-      secondInputType="number"
-      secondInputPlaceholder="Level of Skill"
-      handleInput={this.handleInput}
-      firstInputValue={name}
-      secondInputValue={level}
-      submitMethod={this.submitMethod}
-      /> : null}
-    <div className="details_header">
-      <p className="skill">Skillz</p>
-      <p className="level">Level</p>
+        firstInputType="text"
+        firstInputPlaceholder="Name of Skill"
+        secondInputType="number"
+        secondInputPlaceholder="Level of Skill"
+        handleInput={this.handleInput}
+        firstInputValue={name}
+        secondInputValue={level}
+        submitMethod={this.submitMethod}/> 
+      : null}
       <div className="edit_button_container">
-      <button className="expand_shrink_component" onClick={this.toggleDetails}>
-    {toggleState}
-      </button>
+        <button className="expand_shrink_button" onClick={this.toggleDetails}>
+          {toggleState}
+        </button>
       </div>
-      </div>
-    {skillData.map(skill =>(
-      <div key={skill._id} className="skill_table">
-      <p>{skill.name}</p> 
-      <div className="skill_stat">{this.powerLevel(skill.level)}</div>
-      </div>
-    ))}
+  
+      {skillData.map(skill =>(
+        <div key={skill._id} className="skill_table">
+          <p>{skill.name}</p> 
+          <div className="skill_stat">{this.powerLevel(skill.level)}</div>
+        </div>
+      ))}
     </div>
     )
   }

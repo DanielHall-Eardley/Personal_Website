@@ -13,7 +13,9 @@ class ConnectedLikeList extends Component{
     title:"",
     searchInput:"",
     likeData:[],
-    scrollClass: "list_container"
+    scrollClass: "list_container",
+    right: "right",
+    left: "left",
   }
 
   componentDidMount(){
@@ -68,15 +70,27 @@ class ConnectedLikeList extends Component{
   }
 
   scrollFunction = (direction)=>{
-  if(direction === "left"){
-    this.setState({
-      scrollClass: "list_container_left"
-    })
-  }else if(direction === "right"){
-    this.setState({
-      scrollClass: "list_container_right"
-    })
-  }
+    if(direction === "left"){
+      this.setState({
+        scrollClass: "list_container_left",
+        right:"right"
+      })
+    }else if(direction === "right"){
+      this.setState({
+        scrollClass: "list_container_right",
+        right:"secondRight"
+      })
+    }else if(direction === "secondRight"){
+      this.setState({
+        scrollClass: "list_container_second_right",
+        left:"backLeft",
+      })
+    }else if(direction === "backLeft"){
+      this.setState({
+        scrollClass: "list_container_back_left",
+        left:"left",
+      })
+    }
   } 
   
 render(){
@@ -85,7 +99,7 @@ render(){
 
     return(
     <div className={"like_list"}>
-     {loginState === true ?
+      {loginState === true ?
       <UpdateContent
       firstInputType="text"
       firstInputPlaceholder="Title"
@@ -94,17 +108,19 @@ render(){
       handleInput={this.handleInput}
       firstInputValue={title}
       secondInputValue={searchInput}
-      submitMethod={this.submitMethod}
-      /> : null}
-      
+      submitMethod={this.submitMethod}/>  
+      : null}
+        <div className="scroll_button_container">
+          <button className="scroll_button_left" onClick={()=>this.scrollFunction(this.state.left)}>Left</button>
+          <button className="scroll_button_right" onClick={()=>this.scrollFunction(this.state.right)}>Right</button> 
+        </div>
       <div className={scrollClass}>
-      <button className="scroll_button_left" onClick={()=>this.scrollFunction("left")}>Left</button>
-      <button className="scroll_button_right" onClick={()=>this.scrollFunction("right")}>Right</button> 
+    
       {likeData.map(video=>{
       return(
         <iframe className="video"
         id={video._id}
-        src={`https://www.youtube.com/embed/${video.url}`}
+        src={`https://www.youtube.com/embed/${video.url}?iv_load_policy=3&modestbranding=1`}
         title={video.title}
         allowFullScreen={true}
         referrerPolicy="origin-when-cross-origin"

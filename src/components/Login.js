@@ -1,9 +1,8 @@
 import {connect} from "react-redux"
 import {toggleLogin} from "../redux/actions/ActionCreators"
 import React, { Component } from 'react';
-import config from "../config.js"
 import {Link} from "react-router-dom"
-
+const config = require("../config.js")
 const mapDispatchToProps = dispatch =>({
     toggleLogin: payload => dispatch(toggleLogin(payload))
 })

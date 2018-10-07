@@ -5,6 +5,21 @@
 @import "./component_styles/_login";
 @import "./component_styles/_updateContent";
 
+body{
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar{
+  width: 1vw;
+  background: lightgray
+}
+
+body::-webkit-scrollbar-thumb{
+  width:1vw;
+  height:30px;
+  background:red;
+}
+
 .title_container{
     display: flex;
     justify-content: center;
@@ -28,9 +43,6 @@
   color: white;
   }
   
-
-
-
   a{
   outline: none;
   text-decoration: none;

@@ -1,21 +1,21 @@
-$scroll-button-height: 30%;
-$scroll-button-offset:2%;
 $hover-background: purple;
 $background: lightblue;
 $animate-button: 1s;
 $border: 0;
 
-.like_list {
+.like_list{
     height: 40vh;
+    width: 100%;
 }
 
 .list_container{
-    position: relative;
     display: grid;
     grid-template-columns: repeat(9, calc(100%/3));
     grid-template-rows: 40vh;
-    overflow-y:hidden;
-    scroll-behavior: smooth;
+}
+
+.scroll_button_container{
+    display:flex;
 }
 
 .video {
@@ -23,13 +23,8 @@ $border: 0;
     width: 100%;
 }
 
-%button_height{
-    width: 40px;
-    height:20px;
-}
-
 %clear{
-opacity: 0.2;
+opacity: 0.4;
 background: $background;
 }
 
@@ -38,79 +33,95 @@ opacity: 1;
 background: $hover-background;
 }
 
+%scroll_animation{
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
 
 .scroll_button_left {
-    position: sticky;
-    top: $scroll-button-height;
-    left: $scroll-button-offset;
+    flex-grow:1;
     transition: $animate-button ease-in;
     border: $border;
-    @extend %button_height;
     @extend %clear;
 }
 
 .scroll_button_right {
-    position: sticky;
-    top: $scroll-button-height;
-    right: $scroll-button-offset;
+    flex-grow:1;
     transition: $animate-button ease-in;
     border: $border;
-    @extend %button_height;
-    @extend %clear
-
-    
+    @extend %clear;
 }
 
 .scroll_button_left:hover {
-    position: sticky;
-    top: $scroll-button-height;
-    right: $scroll-button-offset;
+    flex-grow:1;
     border: $border;
-    @extend %button_height;
-    @extend %solid
+    @extend %solid;
 }
 
 .scroll_button_right:hover {
-    position: sticky;
-    top: $scroll-button-height;
-    right: $scroll-button-offset;
+    flex-grow:1;
     border: $border;
-    @extend %button_height;
     @extend %solid;
 }
 
 .list_container_left{
+    @extend %scroll_animation;
     @extend .list_container;
     animation-name: left;
-    animation-delay: 2s;
-    animation-fill-mode: forwards;
+}
+
+.list_container_back_left{
+    @extend %scroll_animation;
+    @extend .list_container;
+    animation-name: back-left;
 }
 
 @keyframes left {
-    from {
-        transform: translateX(0)
+    from{
+        transform: translateX(-100%)
     }
-
-    to {
-        transform: translateX(100vw)
+    to{
+        transform: translateX(0%)
     }
 }
 
-.list_container_right {
+@keyframes back-left {
+    from{
+        transform: translateX(-200%)
+    }
+    to{
+        transform: translateX(-100%)
+    }
+}
+
+.list_container_right{
+    @extend %scroll_animation;
     @extend .list_container;
     animation-name: right;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out
-    
+}
+
+.list_container_second_right{
+    @extend %scroll_animation;
+    @extend .list_container;
+    animation-name: second-right;
+}
+
+@keyframes second-right{
+    from{
+        transform: translateX(-100%)
+    }
+    to{
+        transform: translate(-200%)
+    }
 }
 
 @keyframes right {
-    from {
-        transform: translateX(0)
+    from{
+        transform: translateX(0%)
     }
-
-    to {
-        transform: translateX(-100vw)
+    to{
+        transform: translateX(-100%)
     }
 }

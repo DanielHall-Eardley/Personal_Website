@@ -3,17 +3,14 @@ const app = express()
 const cors = require("cors")
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
+const nodeMailer = require("nodemailer")
+const password = require("../src/config.js")
 
 const Schema = mongoose.Schema
 
 const RpgStats = new Schema({
     name: String,
     level: Number
-})
-
-const Message = new Schema({
-    messages: String,
-    created_at: Date
 })
 
 const Youtube = new Schema({
@@ -36,7 +33,6 @@ database.once("open", ()=>{ console.log("database connected")})
 app.listen(8080, ()=>{ console.log("listening for requests")})
 
 const Skills = mongoose.model("Skills", RpgStats)
-const Messages = mongoose.model("Messages", Message)
 const YoutubeSearch = mongoose.model("YoutubeSearch", Youtube)
 
 app.post("/Update", (req, res)=>{
@@ -133,3 +129,31 @@ app.delete("/Search", (req, res)=>{
         console.log(err)
     })
 })
+
+let transporter = nodeMailer.createTransport({
+    service: "gmail",
+    auth:{
+      user: "danielhellcat.web.dev@gmail.com",
+      pass: password.hardcodedPassword,
+    },
+})
+  
+app.post("/Email", async(req, res)=>{
+  let emailData = {
+    from: req.body.email,
+    to: "350chevy8@gmail.com",
+    subject: req.body.subject,
+    html: `<h3>${req.body.name}</h3><p>${req.body.message}</p>`
+  }
+  let result = await emailData
+  transporter.sendMail(result, (err, info)=>{
+    if(err){
+      res.send("There was a problem sending your message")
+      console.log(err)
+    }else if(info){
+      res.send("Message sent!")
+      console.log(info)
+    }
+  })
+})
+  
