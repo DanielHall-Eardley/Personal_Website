@@ -1,51 +1,70 @@
+$medium-blue:#45a29e;
+$grey:#c5c6c7;
+$dark-blue:#1f2833;
+$light-blue:#66fcf1;
+$black:#0b0c10;
+
 .details_container{
-    height: 40vh;
     overflow: hidden;
+    max-height: 32vh;
+    width:100%;
+    transition:max-height 1s ease-out;
+    background:$black;
   }
   
   .details_container_expanded{
+    overflow: hidden;
     height:auto;
-  }
+    width:100%;
+    transition:max-height 1s ease-in;
+    max-height:1500px;
+    background:$black;
+  }    
 
  .skill_table{
     display: grid;
-    grid-template-rows: 12%;
     grid-template-columns: 1fr 3fr;
+    margin: 1% 2%;
     text-align: center;
   }
   
-  .skill{
-    font-size: 1.3rem;
-    color: darkred;
-  }
-  
-  .level{
-    font-size: 1.3rem;
-    color: darkred;
-  }
-  
   .skill_level{
-    width: 80%;
-    height: 20%;
-    margin: 40% 0%;
-    background-color:lightskyblue
+    width: 100%;
+    height:30%;
+    background-color:$dark-blue;
+    align-self:center;
    }
    
    .highlight{
-   background-color:palevioletred
+   background-color:$light-blue
    }
    
   .skill_stat{
     display:grid;
-    grid-template-columns: repeat(10, 1fr)
+    grid-template-columns: repeat(10, 1fr);
   }
 
   .edit_button_container{
-    display:flex; 
+    display:flex;
+    height:5vh; 
   }
 
-  .expand_shrink_button{
+  .expand_shrink{
     flex-grow:1;
+  }
+
+  .skill_name{
+    font-size: 1.2rem;
+    color: $grey
+  }
+
+  @media only screen and (max-width: 650px){
+    .skill_table{
+      display: grid;
+      grid-template-columns: 1fr 1.7fr;
+      margin: 0% 2%;
+      text-align: center;
+    }
   }
 
    

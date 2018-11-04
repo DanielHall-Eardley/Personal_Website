@@ -31,26 +31,26 @@ componentDidMount(){
 }
 
 handleInput=(e)=>{
-if(e.target.type === "text"){
-  this.setState({
-    name:e.target.value
-  })
-}else if(e.target.type==="number"){
-  this.setState({
-    level: e.target.value
-  })
-}
+  if(e.target.type === "text"){
+    this.setState({
+      name:e.target.value
+    })
+  }else if(e.target.type==="number"){
+    this.setState({
+      level: e.target.value
+    })
+  }
 }
 
 submitMethod = (method)=>{
   let requestMethod=""
-if(method ==="create"){
-  requestMethod = "post"
-}else if(method === "update"){
-  requestMethod = "put"
-}else if(method === "delete"){
-  requestMethod = "delete"
-}
+  if(method ==="create"){
+    requestMethod = "post"
+  }else if(method === "update"){
+    requestMethod = "put"
+  }else if(method === "delete"){
+    requestMethod = "delete"
+  }
 axios({
   method: requestMethod,
   url: 'http://localhost:8080/Update',
@@ -67,10 +67,9 @@ this.setState({
 }
 
 toggleDetails= ()=>{
-  switch(this.props.toggleState){
-  case "expand" :
+  if(this.props.toggleState === "expand"){
     return this.props.toggleHeight("shrink")
-  case "shrink":
+  }else if(this.props.toggleState === "shrink"){
     return this.props.toggleHeight("expand")  
   }
 }
@@ -87,7 +86,7 @@ powerLevel=(level)=>{
     const {skillData, name, level} = this.state
     const {toggleState, loginState,} = this.props
     return(
-    <div className={toggleState === "expand" ? "details_container" : "details_container_expanded"}>
+    <div s className={toggleState === "expand" ? "details_container" : "details_container_expanded"}>
       {loginState === true ?
       <UpdateContent
         firstInputType="text"
@@ -100,14 +99,14 @@ powerLevel=(level)=>{
         submitMethod={this.submitMethod}/> 
       : null}
       <div className="edit_button_container">
-        <button className="expand_shrink_button" onClick={this.toggleDetails}>
+        <button className="expand_shrink button" onClick={this.toggleDetails}>
           {toggleState}
         </button>
       </div>
   
       {skillData.map(skill =>(
         <div key={skill._id} className="skill_table">
-          <p>{skill.name}</p> 
+          <p className="skill_name">{skill.name}</p> 
           <div className="skill_stat">{this.powerLevel(skill.level)}</div>
         </div>
       ))}

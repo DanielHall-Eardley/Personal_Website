@@ -5,68 +5,100 @@
 @import "./component_styles/_login";
 @import "./component_styles/_updateContent";
 
-body{
+$medium-blue:#45a29e;
+$grey:#c5c6c7;
+$dark-blue:#1f2833;
+$light-blue:#66fcf1;
+$black:#0b0c10;
+
+body {
   overflow-x: hidden;
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   width: 1vw;
-  background: lightgray
+  background: #C5C6C7
 }
 
-body::-webkit-scrollbar-thumb{
-  width:1vw;
-  height:30px;
-  background:red;
+body::-webkit-scrollbar-thumb {
+  width: 0.8vw;
+  height: 30px;
+  background:$dark-blue;
 }
 
-.title_container{
-    display: flex;
-    justify-content: center;
-  background-color: black;
-  }
-  
-  .summary_container{
-    display: flex;
-    justify-content:center;
-    height: 30%;
-    background-color: black;
-    padding: 2%;
-  }
+.summary_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  background-color: #0b0c10;
+  padding: 2%;
+}
 
-  .summary{
-    color:white
-  }
-  
-  .animated_name{
-  font: italic 4rem "Fira Sans", serif;
-  color: white;
-  }
-  
-  a{
+.summary {
+  color:$medium-blue;
+  font-size:1.1rem;
+  text-align: center;
+}
+
+.summary_title{
+  color:$grey;
+}
+
+a {
   outline: none;
   text-decoration: none;
-  color: black;
-  }
-  
-  a:hover, a:focus{
-  color: orange;
-  }
-  
-  a:active{
-  color: red;
-  }
+  color: $light-blue;
+}
 
-  .sub_title_container{
+a:hover,
+a:focus {
+  color: $grey;
+}
+
+a:active {
+  color: $dark-blue;
+}
+
+.sub_title_container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: $dark-blue;
+}
+
+.sub_title_text {
+  color:$grey;
+}
+
+.button{
+  background: $medium-blue;
+  border:solid 1px $medium-blue;
+  color:$dark-blue;
+  transition: 0.3s ease-in;
+}
+
+.button:hover{
+  background:white;
+  border:solid 1px $medium-blue;
+  color:$medium-blue;
+}
+
+.button:active{
+  background: $light-blue;
+  border: solid 1px $light-blue;
+  color:$dark-blue;
+}
+
+@media only screen and (max-width: 650px){
+  .summary_container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-content: center;
-    background-color:black;
-  } 
-  
-  .sub_title_text{
-    color: white;
+    align-items: center;
+    height: 40vh;
+    background-color:#0b0c10;
+    padding: 2%;
   }
-  
-
- 
+}

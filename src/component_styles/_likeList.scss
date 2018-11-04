@@ -1,21 +1,20 @@
-$hover-background: purple;
-$background: lightblue;
-$animate-button: 1s;
-$border: 0;
-
 .like_list{
     height: 40vh;
     width: 100%;
+    overflow:hidden;     
 }
 
 .list_container{
     display: grid;
     grid-template-columns: repeat(9, calc(100%/3));
-    grid-template-rows: 40vh;
+    grid-template-rows: 35.2vh;
 }
 
 .scroll_button_container{
-    display:flex;
+    display:grid;
+    grid-template-columns: 0.1fr 1fr 1fr 1fr 0.1fr; 
+    grid-template-rows:5vh;
+    background: #c5c6c7;
 }
 
 .video {
@@ -23,47 +22,18 @@ $border: 0;
     width: 100%;
 }
 
-%clear{
-opacity: 0.4;
-background: $background;
-}
-
-%solid{
-opacity: 1;
-background: $hover-background;
-}
-
 %scroll_animation{
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: linear;
 }
 
-
-.scroll_button_left {
-    flex-grow:1;
-    transition: $animate-button ease-in;
-    border: $border;
-    @extend %clear;
+.scroll_left {
+    grid-column: 1/2
 }
 
-.scroll_button_right {
-    flex-grow:1;
-    transition: $animate-button ease-in;
-    border: $border;
-    @extend %clear;
-}
-
-.scroll_button_left:hover {
-    flex-grow:1;
-    border: $border;
-    @extend %solid;
-}
-
-.scroll_button_right:hover {
-    flex-grow:1;
-    border: $border;
-    @extend %solid;
+.scroll_right {
+    grid-column: 5/6
 }
 
 .list_container_left{
@@ -123,5 +93,53 @@ background: $hover-background;
     }
     to{
         transform: translateX(-100%)
+    }
+}
+
+%video_title_styles{
+    display:flex;
+    justify-content: center;
+    align-items: center;  
+    margin: 0px;
+    height:100%;
+    font-size:1.2rem;
+    color:#0b0c10
+}
+
+
+.video_title-enter {
+    @extend %video_title_styles;
+    opacity: 0;
+}
+
+.video_title-enter-active{
+    opacity: 1;
+    transition: opacity 4s ease-in;  
+}
+
+
+.video_title-enter-done{
+    @extend %video_title_styles;
+}
+
+.video-appear{
+    opacity: 0;
+}
+
+.video-appear-active{
+    opacity: 1;
+    transition: opacity 5s ease-in;  
+}
+
+@media only screen and (max-width: 650px){
+    .like_list{
+        height: 40vh;
+        width: 100%;
+        overflow-x:scroll;     
+    }
+    .list_container{
+        display: grid;
+        grid-template-columns: repeat(9, 100%);
+        grid-template-rows: 40vh;
     }
 }

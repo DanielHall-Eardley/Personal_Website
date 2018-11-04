@@ -5,13 +5,6 @@ export const toggleLogin = (value=null)=>{
     })
 }
 
-export const animation = (value=null)=>{
-    return ({
-        type:"animation",
-        payload: value,
-    })
-}
-
 export const toggleHeight = (value=null)=>{
     return ({
         type:"toggleHeight",

@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const nodeMailer = require("nodemailer")
 const password = require("../src/config.js")
+const PORT = process.env.PORT || 8080
 
 const Schema = mongoose.Schema
 
@@ -30,7 +31,7 @@ const database = mongoose.connection
 database.on("error", console.error.bind(console, "connection error"))
 database.once("open", ()=>{ console.log("database connected")})
 
-app.listen(8080, ()=>{ console.log("listening for requests")})
+app.listen(PORT, ()=>{ console.log("listening for requests")})
 
 const Skills = mongoose.model("Skills", RpgStats)
 const YoutubeSearch = mongoose.model("YoutubeSearch", Youtube)
@@ -140,10 +141,9 @@ let transporter = nodeMailer.createTransport({
   
 app.post("/Email", async(req, res)=>{
   let emailData = {
-    from: req.body.email,
     to: "350chevy8@gmail.com",
     subject: req.body.subject,
-    html: `<h3>${req.body.name}</h3><p>${req.body.message}</p>`
+    html: `<h3>${req.body.name}</h3><p>${req.body.message}</p><p>${req.body.email}</p>`
   }
   let result = await emailData
   transporter.sendMail(result, (err, info)=>{

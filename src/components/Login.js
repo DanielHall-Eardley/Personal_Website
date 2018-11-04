@@ -33,6 +33,13 @@ class ConnectedLogin extends Component{
         })
        } 
     }
+
+    componentDidMount(){
+      let formContainer = document.querySelector(".form_container")
+        return formContainer.scrollIntoView({
+          behavior:"smooth" 
+        })
+    }
     
     render(){
         const {title} = this.state
@@ -41,9 +48,10 @@ class ConnectedLogin extends Component{
         <form className="form_container" onSubmit={this.handleSubmit}>
         <label className="login_title">{title}</label>
            <input className="login_text" type="password" onChange={this.handleChange} 
-           value={getText}/>
-           <button className="login_button" type="submit">Login</button>
-           <Link to="/" className="hide_button"><button onClick={()=>toggleLogin(false)}>Logout</button></Link>
+           value={getText} placeholder="Password"/>
+           <button className="login button" type="submit">Login</button>
+           <Link to="/" className="home_login button" 
+           onClick={()=>toggleLogin(false)}>Logout</Link>
        </form>
         )
     }

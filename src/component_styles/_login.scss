@@ -1,26 +1,14 @@
   
-  .login_title{
-    grid-column: [title];
+  .login_title, .home_login, .login_text, .login{
+    text-align: center;
+    font-size: 1rem;
   }
-  
-  .login_text{
-  grid-column: [text_input];
-  }
-  
-  .login_button{
-  grid-column: [submit_button];
-  }
-  
-  .hide_button{
-  grid-column: [hide_button]
-  }
-  
    
   .form_container{
+    background-color: #c5c6c7; 
     display:grid;
-    grid-template-rows: 12% ;
-    grid-template-columns: 4fr [title] 3fr [text_input] 2fr [submit_button] 1fr [hide_button];
-    padding: 2%;
-    background-color: lightgrey;
-    border-radius: 10px;
+    grid-template-columns: 100%;
+    grid-gap:5px;
+    padding: 2% 25%;
+    border-radius:10px;
   }

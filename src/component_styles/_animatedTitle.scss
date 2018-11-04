@@ -1,0 +1,316 @@
+$b-color: #0b0c10;
+$title-color: #45A29e;
+
+.title_container {
+    height: 30vh;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    z-index: 0;
+    background: $b-color;
+}
+
+.animated_rpms {
+    background: $b-color;
+    border-bottom: solid 3px $title-color;
+    position: absolute;
+    bottom: 0%;
+    right: 50%;
+    width: 45%;
+    height: 200%;
+    transform-origin: bottom right;
+    animation:
+        ignition 0.2s ease-out 1.6s 1,
+        idle 0.7s linear 1.7s 17,
+        revlow 0.8s linear 12.8s 1,
+        revmed 1.8s linear 13.6s 1,
+        revhigh 1.6s linear 15.4s 1,
+        revmed 1.8s linear 16.8s 1,
+        revhigh 1.6s linear 18.7s 1,
+        idle 0.7s linear 20.2s 17,
+        accelerate 14.3s linear 23.2s 1 forwards
+}
+
+.cover_box {
+    background: $b-color;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    width: 45%;
+    height: 200%;
+    transform-origin: bottom left;
+    animation:
+        coverboxrevlow 0.8s linear 12.8s 1,
+        coverboxrevmed 1.8s linear 13.6s 1,
+        coverboxrevhigh 1.6s linear 15.4s 1,
+        coverboxrevmed 1.8s linear 16.8s 1,
+        coverboxrevhigh 1.6s linear 18.6s 1,
+        accelerate 3.7s linear 24s 1 forwards
+}
+
+@keyframes ignition {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(9deg)
+    }
+}
+
+@keyframes idle {
+    0% {
+        transform: rotate(7deg)
+    }
+
+    23% {
+        transform: rotate(7.5deg)
+    }
+
+    37% {
+        transform: rotate(7.7deg)
+    }
+
+    52% {
+        transform: rotate(7deg)
+    }
+
+    63% {
+        transform: rotate(7.2deg)
+    }
+
+    78% {
+        transform: rotate(7.5deg)
+    }
+
+    91% {
+        transform: rotate(7.2deg)
+    }
+
+    100% {
+        transform: rotate(7.8deg)
+    }
+}
+
+@keyframes revlow {
+    0% {
+        transform: rotate(8deg)
+    }
+
+    42% {
+        transform: rotate(110deg)
+    }
+
+    100% {
+        transform: rotate(45deg)
+    }
+
+}
+
+@keyframes revmed {
+    0% {
+        transform: rotate(8deg)
+    }
+
+    42% {
+        transform: rotate(145deg)
+    }
+
+    100% {
+        transform: rotate(25deg)
+    }
+
+}
+
+@keyframes revhigh {
+    0% {
+        transform: rotate(8deg)
+    }
+
+    42% {
+        transform: rotate(167deg)
+    }
+
+    100% {
+        transform: rotate(9deg)
+    }
+
+}
+
+@keyframes coverboxrevlow {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    42% {
+        transform: rotate(100deg)
+    }
+
+    100% {
+        transform: rotate(0deg)
+    }
+
+}
+
+@keyframes coverboxrevmed {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    42% {
+        transform: rotate(120deg)
+    }
+
+    100% {
+        transform: rotate(-15deg)
+    }
+
+}
+
+@keyframes coverboxrevhigh {
+    0% {
+        transform: rotate(-15deg)
+    }
+
+    42% {
+        transform: rotate(120deg)
+    }
+
+    100% {
+        transform: rotate(0deg)
+    }
+
+}
+
+@keyframes accelerate {
+    0% {
+        transform: rotate(9deg)
+    }
+
+    15% {
+        transform: rotate(145deg)
+    }
+
+    19% {
+        transform: rotate(135deg)
+    }
+
+    34% {
+        transform: rotate(157deg)
+    }
+
+    38% {
+        transform: rotate(137deg)
+    }
+
+    47% {
+        transform: rotate(163deg)
+    }
+
+    100% {
+        transform: rotate(185deg)
+    }
+}
+
+@keyframes coverboxaccelerate {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(130deg)
+    }
+}
+
+.title_name {
+    font: italic 4rem "Fira Sans", serif;
+    text-align: center;
+    color: $title-color;
+    z-index: 1
+}
+
+.mute {
+    position: absolute;
+    left: 97%;
+    bottom: 1%;
+    opacity: 0.4;
+    background-color: $title-color;
+    height: 20px;
+    width: 22px;
+    border-radius: 3px;
+    padding: 1px
+}
+
+.replay {
+    position: absolute;
+    bottom: 1%;
+    left: 94%;
+    opacity: 0.4;
+    background-color: $title-color;
+    height: 20px;
+    width: 22px;
+    border-radius: 3px;
+    padding: 1px
+}
+
+.mute:hover {
+    position: absolute;
+    bottom: 2%;
+    left: 97%;
+    opacity: 1;
+    height: 20px;
+    width: 22px;
+    border-radius: 3px;
+    padding: 1px
+}
+
+.replay:hover {
+    position: absolute;
+    bottom: 2%;
+    left: 94%;
+    opacity: 1;
+    height: 20px;
+    width: 22px;
+    border-radius: 3px;
+    padding: 1px
+}
+
+.ignition {
+    font-size: 1.4rem;
+    border-style: none;
+    background-color: $title-color;
+    color: $b-color;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 25%;
+    left: 45%;
+    border-radius: 50%;
+}
+
+.ignition:hover {
+    font-size: 1.4rem;
+    background: rgb(233, 12, 12);
+    color: $b-color;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 25%;
+    left: 45%;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 650px) {
+    .mobile_title_container {
+        display: flex;
+        flex-grow: 1;
+        height: 20vh;
+        justify-content: center;
+        align-items: center;
+        background: black
+    }
+
+    .mobile_title {
+        color: white;
+    }
+}

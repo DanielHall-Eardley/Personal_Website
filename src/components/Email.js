@@ -9,6 +9,13 @@ export default class Email extends Component{
     message:"",
   }
 
+  componentDidMount(){
+    let emailContainer = document.querySelector(".email_form")
+      return emailContainer.scrollIntoView({
+        behavior:"smooth" 
+    })
+  }
+
   handleEvent= (e)=>{
     switch(e.target.name){
       case "name":
@@ -31,7 +38,8 @@ export default class Email extends Component{
           message: e.target.value
         })
         break
-    }
+      default: return null
+    } 
   }
 
   handleSubmit= async(e)=>{
@@ -50,19 +58,16 @@ export default class Email extends Component{
   }
 
   render(){
-    const {form} = this.state
       return(
-        <div className="email_container">
-          <h3 className="sub_title"> Tell me a story</h3>
           <form onSubmit={this.handleSubmit} className="email_form">
+            <h3 className="sub_title"> Tell me a story</h3>
             <input className="name" name="name" onChange={this.handleEvent}  placeholder="name"/>
             <input className="email" name="email" onChange={this.handleEvent}  placeholder="email"/>
             <input className="subject" name="subject" onChange={this.handleEvent}  placeholder="subject"/>
             <textarea className="message" name="message" onChange={this.handleEvent}  placeholder="message me!"></textarea>
-            <button className="email_submit">Send Message!</button>
-            <button className="home_button" onClick={()=>this.props.history.push("/")}>Back</button>
+            <button className="email_submit button">Send Message!</button>
+            <button className="home_email button" onClick={()=>this.props.history.push("/")}>Back</button>
           </form>
-        </div>
       )
   }
 }

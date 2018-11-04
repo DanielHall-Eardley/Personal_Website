@@ -13,7 +13,7 @@ const UpdateContent = (props)=>{
   } = props
   return(
 <div className="update_container">
-<label>Update</label>
+<label class="update_title">Update</label>
 <input className="update_first_input" value={firstInputValue} 
 type={firstInputType} placeholder={firstInputPlaceholder} onChange={handleInput}/>
 <input className="update_second_input" value={secondInputValue} 

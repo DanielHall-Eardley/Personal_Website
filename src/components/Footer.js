@@ -8,38 +8,24 @@ const mapStateToProps = state =>({
   loginState: state.loginReducer.loginState,
 })
 
-const scrollFunction = ()=>{
-  let emailContainer = document.querySelector(".email_container")
-  console.log(emailContainer)
-  return emailContainer.scrollIntoView({
-    behavior:"smooth" 
-  })
-}
-
-
 const ConnectedFooter = (props)=>{
   return(
     <div className="footer_container">
-    <div className="footer">
-      <a href="https://protected-savannah-70839.herokuapp.com/" 
-      rel="noopener noreferrer" target="_blank">Audio App</a>
+      <div className="footer_links">
+        <a href="https://protected-savannah-70839.herokuapp.com/" 
+        rel="noopener noreferrer" target="_blank">Audio App</a>
         <a href="https://expo.io/@danielhalleardley/youtube-search" 
-      rel="noopener noreferrer" target="_blank">React Native App</a>
+        rel="noopener noreferrer" target="_blank">React Native App</a>
         <a href="https://github.com/DanielHall-Eardley" 
-      rel="noopener noreferrer" target="_blank">GitHub</a>
-      
-      <Link to="/Login">Edit</Link>
-      <Link to="/Email">Message me!</Link>
-    
+        rel="noopener noreferrer" target="_blank">GitHub</a>
+        <Link to="/Login">Edit</Link>
+        <Link to="/Email">Message me!</Link>
       </div>
-      <div className="login_container">
-      <Switch>
-        <Route exact path="/Login" render={routerProps=>(
-        <Login {...routerProps}/>)}/>
-        <Route path="/Email" component={Email}
-        onEnter={scrollFunction()}/>
-      </Switch>
-    </div>
+        <Switch>
+          <Route exact path="/Login" render={routerProps=>(
+          <Login {...routerProps}/>)}/>
+          <Route path="/Email" component={Email}/>
+        </Switch>
     </div>
   )
 }
