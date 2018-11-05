@@ -49,7 +49,7 @@ export default class Email extends Component{
     let result = await sendEmail
     axios({
       method:"post",
-      url: "http://localhost:8080/Email",
+      url: "http://danielhalleardley/Email",
       data: result
     }).then(res=>{
       alert(res.data)

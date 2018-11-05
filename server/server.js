@@ -24,6 +24,8 @@ app.use(cors())
 
 app.use(bodyParser())
 
+app.use(express.static(__dirname + "../build"))
+
 mongoose.connect("mongodb://localhost/Personal_website")
 mongoose.Promise = global.Promise
 
@@ -156,4 +158,8 @@ app.post("/Email", async(req, res)=>{
     }
   })
 })
+
+app.get('*', (req, res) => {
+    res.sendFile('index.html',{root: __dirname + '../build'});
+});
   
