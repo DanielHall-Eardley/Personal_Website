@@ -21,7 +21,7 @@ class ConnectedLikeList extends Component{
   }
 
   componentDidMount(){
-    axios.get("http://danielhalleardley/Search")
+    axios.get("/Search")
     .then((res)=>{
       this.setState({
         likeData:res.data
@@ -56,7 +56,7 @@ class ConnectedLikeList extends Component{
     }).then(res=>{
       axios({
         method: requestMethod,
-        url:"http://danielhalleardley/Search",
+        url:"/Search",
         data:{
         title: this.state.title,
         url: res.data.items[0].id.videoId, 

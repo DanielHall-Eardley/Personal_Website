@@ -20,8 +20,6 @@ const Youtube = new Schema({
     urlPicture:String,
 })
 
-app.use(cors())
-
 app.use(bodyParser())
 
 app.use(express.static(__dirname + './../build'))

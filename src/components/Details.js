@@ -22,7 +22,7 @@ state={
 }
 
 componentDidMount(){
-  axios.get("http://danielhalleardley/Update")
+  axios.get("/Update")
   .then((res)=>{
     this.setState({
       skillData: res.data
@@ -53,7 +53,7 @@ submitMethod = (method)=>{
   }
 axios({
   method: requestMethod,
-  url: 'http://danielhalleardley/Update',
+  url: "/Update",
   data: {
     name: this.state.name,
     level: this.state.level,
