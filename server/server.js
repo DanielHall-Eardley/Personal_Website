@@ -24,7 +24,7 @@ app.use(cors())
 
 app.use(bodyParser())
 
-app.use(express.static(__dirname + './../build'))
+app.use(express.static(__dirname + '../server/build'))
 
 mongoose.connect("mongodb://localhost:27017/src")
 mongoose.Promise = global.Promise
