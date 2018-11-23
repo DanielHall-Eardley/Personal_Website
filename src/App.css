@@ -17,8 +17,24 @@
   height: 200%;
   -webkit-transform-origin: bottom right;
           transform-origin: bottom right;
-  -webkit-animation: ignition 0.2s ease-out 1.6s 1, idle 0.7s linear 1.7s 17, revlow 0.8s linear 12.8s 1, revmed 1.8s linear 13.6s 1, revhigh 1.6s linear 15.4s 1, revmed 1.8s linear 16.8s 1, revhigh 1.6s linear 18.7s 1, idle 0.7s linear 20.2s 17, accelerate 14.3s linear 23.2s 1 forwards;
-          animation: ignition 0.2s ease-out 1.6s 1, idle 0.7s linear 1.7s 17, revlow 0.8s linear 12.8s 1, revmed 1.8s linear 13.6s 1, revhigh 1.6s linear 15.4s 1, revmed 1.8s linear 16.8s 1, revhigh 1.6s linear 18.7s 1, idle 0.7s linear 20.2s 17, accelerate 14.3s linear 23.2s 1 forwards;
+  -webkit-animation: ignition 0.2s ease-out 1.6s 1,
+ idle 0.7s linear 1.7s 17,
+ revlow 0.8s linear 12.8s 1,
+ revmed 1.8s linear 13.6s 1,
+ revhigh 1.6s linear 15.4s 1,
+ revmed 1.8s linear 16.8s 1,
+ revhigh 1.6s linear 18.7s 1,
+ idle 0.7s linear 20.2s 17,
+ accelerate 14.3s linear 23.2s 1 forwards;
+          animation: ignition 0.2s ease-out 1.6s 1,
+ idle 0.7s linear 1.7s 17,
+ revlow 0.8s linear 12.8s 1,
+ revmed 1.8s linear 13.6s 1,
+ revhigh 1.6s linear 15.4s 1,
+ revmed 1.8s linear 16.8s 1,
+ revhigh 1.6s linear 18.7s 1,
+ idle 0.7s linear 20.2s 17,
+ accelerate 14.3s linear 23.2s 1 forwards;
 }
 
 .cover_box {
@@ -30,8 +46,18 @@
   height: 200%;
   -webkit-transform-origin: bottom left;
           transform-origin: bottom left;
-  -webkit-animation: coverboxrevlow 0.8s linear 12.8s 1, coverboxrevmed 1.8s linear 13.6s 1, coverboxrevhigh 1.6s linear 15.4s 1, coverboxrevmed 1.8s linear 16.8s 1, coverboxrevhigh 1.6s linear 18.6s 1, accelerate 3.7s linear 24s 1 forwards;
-          animation: coverboxrevlow 0.8s linear 12.8s 1, coverboxrevmed 1.8s linear 13.6s 1, coverboxrevhigh 1.6s linear 15.4s 1, coverboxrevmed 1.8s linear 16.8s 1, coverboxrevhigh 1.6s linear 18.6s 1, accelerate 3.7s linear 24s 1 forwards;
+  -webkit-animation: coverboxrevlow 0.8s linear 12.8s 1,
+ coverboxrevmed 1.8s linear 13.6s 1,
+ coverboxrevhigh 1.6s linear 15.4s 1,
+ coverboxrevmed 1.8s linear 16.8s 1,
+ coverboxrevhigh 1.6s linear 18.6s 1,
+ accelerate 3.7s linear 24s 1 forwards;
+          animation: coverboxrevlow 0.8s linear 12.8s 1,
+ coverboxrevmed 1.8s linear 13.6s 1,
+ coverboxrevhigh 1.6s linear 15.4s 1,
+ coverboxrevmed 1.8s linear 16.8s 1,
+ coverboxrevhigh 1.6s linear 18.6s 1,
+ accelerate 3.7s linear 24s 1 forwards;
 }
 
 @-webkit-keyframes ignition {
@@ -533,9 +559,9 @@
 
 .skill_stat {
   display: -ms-grid;
-  display: grid;
   -ms-grid-columns: (1fr)[10];
-      grid-template-columns: repeat(10, 1fr);
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
 }
 
 .edit_button_container {
@@ -588,8 +614,8 @@
   grid-gap: 10px;
   -ms-grid-rows: 8vh 5vh 20vh 5vh 5vh;
       grid-template-rows: 8vh 5vh 20vh 5vh 5vh;
-  -ms-grid-columns: (calc(100%/3))[3];
-      grid-template-columns: repeat(3, calc(100%/3));
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
   padding: 2% 5%;
   background: #c5c6c7;
   border-radius: 10px;
@@ -602,6 +628,7 @@
   -ms-grid-row: 3;
   -ms-grid-row-span: 1;
   grid-row: 3/4;
+  overflow: scroll;
 }
 
 .sub_title {
@@ -630,6 +657,39 @@
     display: flex;
     -ms-flex-flow: wrap;
         flex-flow: wrap;
+  }
+  .email_form {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 8vh 5vh 5vh 5vh 20vh 5vh 5vh;
+        grid-template-rows: 8vh 5vh 5vh 5vh 20vh 5vh 5vh;
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+  }
+  .message {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 1;
+    grid-row: 5/6;
+    overflow: scroll;
+  }
+  .sub_title {
+    text-align: center;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  .email_submit {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  .home_email {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
   }
 }
 

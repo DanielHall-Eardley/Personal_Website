@@ -1,11 +1,12 @@
 const express = require('express')
 const app = express()
-const cors = require("cors")
 const mongoose = require("mongoose")
-const bodyParser = require("body-parser")
 const nodeMailer = require("nodemailer")
-const password = require("../src/config.js")
-const PORT = process.env.PORT || 8080
+const config = require("../src/config.js")
+const bodyParser = require('body-parser')
+
+
+const PORT = process.env.PORT || 8080 
 
 const Schema = mongoose.Schema
 
@@ -20,7 +21,12 @@ const Youtube = new Schema({
     urlPicture:String,
 })
 
-app.use(bodyParser())
+app.use(bodyParser.urlencoded({
+    extended:true
+}))
+
+app.use(bodyParser.json())
+
 
 app.use(express.static(__dirname + './../build'))
 
@@ -135,7 +141,7 @@ let transporter = nodeMailer.createTransport({
     service: "gmail",
     auth:{
       user: "danielhellcat.web.dev@gmail.com",
-      pass: password.hardcodedPassword,
+      pass: config.hardcodedPassword,
     },
 })
   
@@ -157,7 +163,11 @@ app.post("/Email", async(req, res)=>{
   })
 })
 
+app.post("/Secure", (req, res)=>{
+  res.send(config)  
+})
+
 app.get('*', (req, res) => {
-    res.sendFile('index.html',{root: __dirname + '../build'});
+    res.sendFile('index.html',{root: __dirname + './../build'});
 });
   

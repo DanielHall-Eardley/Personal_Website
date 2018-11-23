@@ -1,5 +1,4 @@
 import React, {Component} from "react"
-import config from "../config.js"
 import {connect} from "react-redux"
 import axios from "axios"
 import UpdateContent from "./UpdateContent"
@@ -21,6 +20,7 @@ class ConnectedLikeList extends Component{
   }
 
   componentDidMount(){
+    
     axios.get("/Search")
     .then((res)=>{
       this.setState({
@@ -40,6 +40,8 @@ class ConnectedLikeList extends Component{
     })
   }
   }
+
+ 
   
   submitMethod = (method)=>{
     let requestMethod=""
@@ -51,8 +53,12 @@ class ConnectedLikeList extends Component{
     requestMethod = "delete"
   }
   axios({
+    method: "post",
+    url: "/Secure"
+  }).then(res=>{
+  axios({
     method: "get",
-    url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=viewCount&q=${this.state.searchInput}&type=video&videoDefinition=high&fields=items(id%2Csnippet)&key=${config.youtubeApiKey}`
+    url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=viewCount&q=${this.state.searchInput}&type=video&videoDefinition=high&fields=items(id%2Csnippet)&key=${res.data.youtubeApiKey}`
     }).then(res=>{
       axios({
         method: requestMethod,
@@ -68,6 +74,7 @@ class ConnectedLikeList extends Component{
         })
       })
     })
+  })
   }
 
   scrollFunction = (direction)=>{

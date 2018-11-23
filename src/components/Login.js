@@ -2,7 +2,7 @@ import {connect} from "react-redux"
 import {toggleLogin} from "../redux/actions/ActionCreators"
 import React, { Component } from 'react';
 import {Link} from "react-router-dom"
-const config = require("../config.js")
+import axios from "axios"
 const mapDispatchToProps = dispatch =>({
     toggleLogin: payload => dispatch(toggleLogin(payload))
 })
@@ -19,19 +19,25 @@ class ConnectedLogin extends Component{
       })
     }
 
-    handleSubmit=(e)=>{
-       e.preventDefault()
-       if(this.state.password === config.hardcodedPassword){
-        this.props.toggleLogin(true) 
-        this.setState({
-            password:""
-        },()=>{this.props.history.push("/")})
-       }else{
-        this.setState({
-            title:"Nice try, but there can only be one",
-            password:""
+    handleSubmit= (e)=>{
+      e.preventDefault()
+        axios({
+           method: "post",
+           url: "/Secure",
         })
-       } 
+        .then(res=>{
+          if(this.state.password === res.data.hardcodedPassword){
+            this.props.toggleLogin(true) 
+              this.setState({
+                password:""
+              },()=>{this.props.history.push("/")})
+          }else{
+            this.setState({
+              title:"Nice try, but there can only be one",
+              password:""
+            })
+          } 
+        }).catch(err=> console.log(err))  
     }
 
     componentDidMount(){
